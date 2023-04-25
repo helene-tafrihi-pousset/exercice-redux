@@ -4,8 +4,6 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setInputExo2, setSubmit } from '../../store/reducers/input2';
 
 function Exo2() {
-  // const [inputExo2, setInputExo2] = useState(''); // 1er state pour le onchange (input)
-  // const [submit, setSubmit] = useState(''); // 2e state pour gérer le submit
   const dispatch = useAppDispatch();
   const inputExo2 = useAppSelector((state) => state.input2.inputExo2);
   const submit = useAppSelector((state) => state.input2.submit);
