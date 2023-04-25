@@ -1,11 +1,15 @@
-interface HandleProps {
+import { useAppDispatch } from '../../hooks/redux';
+import { setInputExo1 } from '../../store/reducers/input1';
+
+interface HandleTypeInput {
   inputExo1: string
-  setInputExo1: (message: string) => void
 }
-function Form({ inputExo1, setInputExo1 }: HandleProps) {
+function Form({ inputExo1 }: HandleTypeInput) {
+  const dispatch = useAppDispatch();
+
   const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    setInputExo1(newValue);
+    dispatch(setInputExo1(newValue));
   };
   return (
     <form className="form">

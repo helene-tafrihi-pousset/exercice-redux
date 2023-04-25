@@ -1,17 +1,19 @@
 interface HandleProps {
   inputExo2: string
-  setInputExo2: (message: string) => void
-  setSubmit: (message: string) => void
+  handleChangeInputValue: (message: string) => void
+  handleSubmit: () => void
 }
-function Form2({ inputExo2, setInputExo2, setSubmit }: HandleProps) {
-  const handleChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+function Form2({ inputExo2, handleChangeInputValue, handleSubmit }: HandleProps) {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    setInputExo2(newValue);
+    handleChangeInputValue(newValue);
   };
+
   const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmit(inputExo2);// on assigne la valeur de inputExo2 à submit car on a créé un 2e state
+    handleSubmit();
   };
+
   return (
     <form className="form" onSubmit={handleSubmitForm}>
       <label htmlFor="input-promo2">
@@ -20,7 +22,7 @@ function Form2({ inputExo2, setInputExo2, setSubmit }: HandleProps) {
           name="input-promo2"
           id="input-promo2"
           placeholder="Saississez votre message..."
-          onChange={handleChangeInputValue}
+          onChange={(e) => handleChangeInput(e)}
           value={inputExo2}
         />
         <button className="button" type="submit"> Envoyer </button>
